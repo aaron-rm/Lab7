@@ -34,21 +34,32 @@ public class Main {
                         matriz.datosMatriz(reader);
                         matriz.imprimirMatriz();
 
-                        break;
+                        continue;
                     }
                     case 2:{
-                        break;
+                        System.out.print("Ingrese número de filas: ");
+                        int n = Integer.parseInt(reader.readLine());
+                        System.out.print("Ingrese número de columnas: ");
+                        int m = Integer.parseInt(reader.readLine());
+                        Problema2 matriz = new Problema2(n,m);
+
+                        matriz.datosMatriz(reader);
+                        matriz.imprimirMatriz();
+                        continue;
                     }
                     case 3:{
-                        break;
+
+                        continue;
                     }
                     case 4:{
-                        break;
+
+                        continue;
                     }
                     default:{
                         break;
                     }
                 }
+
                 break;
             }
             catch (NumberFormatException e){

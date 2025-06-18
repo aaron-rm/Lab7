@@ -18,25 +18,36 @@ public class Problema1 {
     }
 
     public void datosMatriz(BufferedReader reader){
+        while (true){
         try {
             for (int i=0;i<filas;i++){
                 for (int j=0;j<columnas;j++){
-                    System.out.printf("\nIngrese el número en la posicion [%d][%d]: ",i,j);
+                    System.out.printf("Ingrese el número en la posicion [%d][%d]: ",i,j);
                     matriz[i][j] = Integer.parseInt(reader.readLine());
                     matrizTraspuesta[j][i]=matriz[i][j];
                 }
             }
+            break;
+        }
+        catch (NullPointerException e){
+            System.err.println("Error: " + e.getMessage());
+            continue;
         }
         catch (NumberFormatException e){
             System.err.println("Error: ingrese un dígito " + e.getMessage());
+            continue;
         }
         catch (RuntimeException e){
             System.err.println("Error: " + e.getMessage());
+            continue;
         }
         catch (IOException e){
             System.err.println("Error: " + e.getMessage());
+        continue;
+        }
         }
     }
+
 
     public void imprimirMatriz(){
         System.out.println("Matriz original");
