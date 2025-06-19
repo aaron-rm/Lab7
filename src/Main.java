@@ -52,14 +52,13 @@ public class Main {
                         continue;
                     }
                     case 4:{
-
+                        
                         continue;
                     }
                     default:{
                         break;
                     }
                 }
-
                 break;
             }
             catch (NumberFormatException e){

@@ -4,5 +4,10 @@ package problema4;
 //por orden de notas de menor a mayor ambos vectores o por orden alfabético
 
 public class Problema4 {
+    private int[] nombre;
+    private int[] califcacion;
 
+    public Problema4(){
+
+    }
 }
