@@ -25,8 +25,8 @@ public class Problema4 {
                     try {
                         System.out.print("Ingrese la nota final de " + nombres[i] + ": ");
                         notas[i] = Double.parseDouble(reader.readLine());
-                        if (notas[i] < 0 || notas[i] > 20) {
-                            System.err.println("La nota debe estar entre 0 y 20.");
+                        if (notas[i] < 0 || notas[i] > 100) {
+                            System.err.println("La nota debe estar entre 0 y 100.");
                             continue;
                         }
                         break;
