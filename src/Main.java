@@ -56,7 +56,14 @@ public class Main {
                         continue;
                     }
                     case 4:{
-                        
+                        try {
+                            System.out.print("Ingrese la cantidad de estudiantes: ");
+                            int cantidad = Integer.parseInt(reader.readLine());
+                            Problema4 problema = new Problema4(cantidad);
+                            problema.ejecutarMenu(reader);
+                        } catch (NumberFormatException | IOException e) {
+                            System.err.println("Entrada inválida. " + e.getMessage());
+                        }
                         continue;
                     }
                     default:{
