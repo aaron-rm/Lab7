@@ -32,6 +32,7 @@ public class Main {
                         Problema1 matriz = new Problema1(n,m);
 
                         matriz.datosMatriz(reader);
+                        System.out.println();
                         matriz.imprimirMatriz();
 
                         continue;
@@ -44,6 +45,7 @@ public class Main {
                         Problema2 matriz = new Problema2(n,m);
 
                         matriz.datosMatriz(reader);
+                        System.out.println();
                         matriz.imprimirMatriz();
                         continue;
                     }
@@ -65,16 +67,19 @@ public class Main {
             }
             catch (NumberFormatException e){
                 System.err.println("Error, ingrese un digito: "+ e.getMessage());
-                continue;
             }
             catch (RuntimeException e){
                 System.err.println("Error: "+ e.getMessage());
-                continue;
             }
             catch (IOException e){
                 System.err.println("Error: "+ e.getMessage());
-                continue;
+            }
+            finally {
+                System.out.println();
+                System.out.println("...Volviendo al menú");
+                System.out.println();
             }
         }
+        System.out.println("...Cerrando programa");
     }
 }

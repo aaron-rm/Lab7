@@ -26,11 +26,9 @@ public class Matriz {
     public void imprimirMatriz() {
         System.out.println();
         System.out.println("Matriz ingresada:");
-        System.out.println();
-
         for (int i = 0; i < tamañoMatriz; i++) {
             for (int j = 0; j < tamañoMatriz; j++) {
-                System.out.print(elementoMatriz[i][j] + " ");
+                System.out.printf("%d\t",elementoMatriz[i][j]);
             }
             System.out.println();
         }
