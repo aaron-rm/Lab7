@@ -1,5 +1,6 @@
 package problema4;
-import java.util.Locale;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 //Declare 2 vectores. Uno contendrá el nombre de los estudiantes y el otro la calificación
 //final obtenida en el curso.  Ordene los dos vectores. Permita al usuario escoger si ordena
@@ -13,27 +14,34 @@ public class Problema4 {
         nombres = new String[cantidad];
         notas = new double[cantidad];
     }
-    public void cargarDatos(java.io.BufferedReader reader) throws java.io.IOException {
-        for (int i = 0; i < nombres.length; i++) {
-            System.out.print("Ingrese el nombre del estudiante #" + (i + 1) + ": ");
-            nombres[i] = reader.readLine();
 
-            while (true) {
-                try {
-                    System.out.print("Ingrese la nota final de " + nombres[i] + ": ");
-                    notas[i] = Double.parseDouble(reader.readLine());
-                    if (notas[i] < 0 || notas[i] > 20) {
-                        throw new IllegalArgumentException("La nota debe estar entre 0 y 20.");
+    public void cargarDatos(BufferedReader reader) {
+        for (int i = 0; i < nombres.length; i++) {
+            try {
+                System.out.print("Ingrese el nombre del estudiante #" + (i + 1) + ": ");
+                nombres[i] = reader.readLine();
+
+                while (true) {
+                    try {
+                        System.out.print("Ingrese la nota final de " + nombres[i] + ": ");
+                        notas[i] = Double.parseDouble(reader.readLine());
+                        if (notas[i] < 0 || notas[i] > 20) {
+                            System.err.println("La nota debe estar entre 0 y 20.");
+                            continue;
+                        }
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.err.println("Ingrese un número válido para la nota.");
                     }
-                    break;
-                } catch (NumberFormatException e) {
-                    System.err.println("Ingrese un número válido para la nota.");
-                } catch (IllegalArgumentException e) {
-                    System.err.println(e.getMessage());
                 }
+            } catch (IOException e) {
+                System.err.println("Error al leer el nombre del estudiante: " + e.getMessage());
+                nombres[i] = "Desconocido";
+                notas[i] = 0;
             }
         }
     }
+
     public void ordenarPorNotaAscendente() {
         ordenarNotas(true);
     }
@@ -50,37 +58,37 @@ public class Problema4 {
         for (int i = 0; i < notas.length - 1; i++) {
             for (int j = i + 1; j < notas.length; j++) {
                 if ((ascendente && notas[i] > notas[j]) || (!ascendente && notas[i] < notas[j])) {
-                    double tmpNota = notas[i];
-                    notas[i] = notas[j];
-                    notas[j] = tmpNota;
-
-                    String tmpNombre = nombres[i];
-                    nombres[i] = nombres[j];
-                    nombres[j] = tmpNombre;
+                    intercambiar(i, j);
                 }
             }
         }
     }
+
     private void ordenarNombres(boolean ascendente) {
         for (int i = 0; i < nombres.length - 1; i++) {
             for (int j = i + 1; j < nombres.length; j++) {
-                int comparacion = nombres[i].compareToIgnoreCase(nombres[j]);
-                if ((ascendente && comparacion > 0) || (!ascendente && comparacion < 0)) {
-                    String tmpNombre = nombres[i];
-                    nombres[i] = nombres[j];
-                    nombres[j] = tmpNombre;
-
-                    double tmpNota = notas[i];
-                    notas[i] = notas[j];
-                    notas[j] = tmpNota;
+                int cmp = nombres[i].compareToIgnoreCase(nombres[j]);
+                if ((ascendente && cmp > 0) || (!ascendente && cmp < 0)) {
+                    intercambiar(i, j);
                 }
             }
         }
     }
+
+    private void intercambiar(int i, int j) {
+        String tempNombre = nombres[i];
+        nombres[i] = nombres[j];
+        nombres[j] = tempNombre;
+
+        double tempNota = notas[i];
+        notas[i] = notas[j];
+        notas[j] = tempNota;
+    }
+
     public void imprimir() {
         System.out.println("\nListado de estudiantes:");
         for (int i = 0; i < nombres.length; i++) {
-            System.out.println(nombres[i] + " - Nota: " + notas[i]);
+            System.out.printf("%-20s Nota: %.2f\n", nombres[i], notas[i]);
         }
     }
 
@@ -95,6 +103,47 @@ public class Problema4 {
         }
         if (!encontrado) {
             System.out.println("No se encontró al estudiante con nombre: " + nombreBuscado);
+        }
+    }
+
+    public void ejecutarMenu(BufferedReader reader) {
+        try {
+            cargarDatos(reader);
+
+            while (true) {
+                System.out.println("\nOpciones:");
+                System.out.println("1 - Ordenar por nota ascendente");
+                System.out.println("2 - Ordenar por nota descendente");
+                System.out.println("3 - Ordenar por nombre ascendente (A-Z)");
+                System.out.println("4 - Ordenar por nombre descendente (Z-A)");
+                System.out.println("5 - Buscar estudiante por nombre");
+                System.out.println("6 - Mostrar lista");
+                System.out.println("0 - Volver al menú principal");
+                System.out.print("Seleccione una opción: ");
+
+                int opcionInterna = Integer.parseInt(reader.readLine());
+
+                switch (opcionInterna) {
+                    case 1 -> ordenarPorNotaAscendente();
+                    case 2 -> ordenarPorNotaDescendente();
+                    case 3 -> ordenarPorNombreAscendente();
+                    case 4 -> ordenarPorNombreDescendente();
+                    case 5 -> {
+                        System.out.print("Ingrese el nombre a buscar: ");
+                        String nombre = reader.readLine();
+                        buscarPorNombre(nombre);
+                    }
+                    case 6 -> imprimir();
+                    case 0 -> {
+                        System.out.println("Volviendo al menú principal...");
+                        return;
+                    }
+                    default -> System.out.println("Opción inválida.");
+                }
+            }
+
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error durante la ejecución del menú: " + e.getMessage());
         }
     }
 }
