@@ -23,7 +23,7 @@ public class Problema4 {
 
                 while (true) {
                     try {
-                        System.out.print("Ingrese la nota final de " + nombres[i] + ": ");
+                        System.out.print("Ingrese la nota final de " + nombres[i] + " (0 a 100): ");
                         notas[i] = Double.parseDouble(reader.readLine());
                         if (notas[i] < 0 || notas[i] > 100) {
                             System.err.println("La nota debe estar entre 0 y 100.");
@@ -45,15 +45,19 @@ public class Problema4 {
     public void ordenarPorNotaAscendente() {
         ordenarNotas(true);
     }
+
     public void ordenarPorNotaDescendente() {
         ordenarNotas(false);
     }
+
     public void ordenarPorNombreAscendente() {
         ordenarNombres(true);
     }
+
     public void ordenarPorNombreDescendente() {
         ordenarNombres(false);
     }
+
     private void ordenarNotas(boolean ascendente) {
         for (int i = 0; i < notas.length - 1; i++) {
             for (int j = i + 1; j < notas.length; j++) {
@@ -124,10 +128,26 @@ public class Problema4 {
                 int opcionInterna = Integer.parseInt(reader.readLine());
 
                 switch (opcionInterna) {
-                    case 1 -> ordenarPorNotaAscendente();
-                    case 2 -> ordenarPorNotaDescendente();
-                    case 3 -> ordenarPorNombreAscendente();
-                    case 4 -> ordenarPorNombreDescendente();
+                    case 1 -> {
+                        ordenarPorNotaAscendente();
+                        System.out.println("Lista ordenada por nota (ascendente):");
+                        imprimir();
+                    }
+                    case 2 -> {
+                        ordenarPorNotaDescendente();
+                        System.out.println("Lista ordenada por nota (descendente):");
+                        imprimir();
+                    }
+                    case 3 -> {
+                        ordenarPorNombreAscendente();
+                        System.out.println("Lista ordenada por nombre (A-Z):");
+                        imprimir();
+                    }
+                    case 4 -> {
+                        ordenarPorNombreDescendente();
+                        System.out.println("Lista ordenada por nombre (Z-A):");
+                        imprimir();
+                    }
                     case 5 -> {
                         System.out.print("Ingrese el nombre a buscar: ");
                         String nombre = reader.readLine();
