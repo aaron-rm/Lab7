@@ -1,6 +1,6 @@
 import problema1.*;
 import problema2.*;
-import problema3.*;
+import problema3.Problema3;
 import problema4.*;
 
 import java.io.BufferedReader;
@@ -48,7 +48,9 @@ public class Main {
                         continue;
                     }
                     case 3:{
-
+                        System.out.println();
+                        System.out.println("\tProblema 3");
+                        Problema3.ejecutar();
                         continue;
                     }
                     case 4:{
