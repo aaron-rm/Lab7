@@ -1,6 +1,6 @@
 import problema1.*;
 import problema2.*;
-import problema3.*;
+import problema3.Problema3;
 import problema4.*;
 
 import java.io.BufferedReader;
@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 //Aaron Remarchuk   8-1042-134
 //Luis King         8-1017-548
 //Edwin Rodriguez   8-975-208
-//Kevin Kakiyama
+//Kevin Kakiyama    8-1025-1743
 
 public class Main {
     public static void main(String[] args) {
