@@ -1,12 +1,17 @@
 import problema1.*;
 import problema2.*;
-import problema3.Problema3;
+import problema3.*;
 import problema4.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//Grupo:
+//Aaron Remarchuk   8-1042-134
+//Luis King         8-1017-548
+//Edwin Rodriguez   8-975-208
+//Kevin Kakiyama
 
 public class Main {
     public static void main(String[] args) {
@@ -87,6 +92,6 @@ public class Main {
                 System.out.println();
             }
         }
-        System.out.println("...Cerrando programa");
+        System.out.println("...Cerrando el programa");
     }
 }

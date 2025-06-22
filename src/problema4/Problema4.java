@@ -155,7 +155,6 @@ public class Problema4 {
                     }
                     case 6 -> imprimir();
                     case 0 -> {
-                        System.out.println("Volviendo al menú principal...");
                         return;
                     }
                     default -> System.out.println("Opción inválida.");
