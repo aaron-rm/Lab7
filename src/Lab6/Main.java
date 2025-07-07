@@ -1,7 +1,9 @@
-import problema1.*;
-import problema2.*;
-import problema3.Problema3;
-import problema4.*;
+package Lab6;
+
+import Lab6.problema1.Problema1;
+import Lab6.problema2.Problema2;
+import Lab6.problema3.Problema3;
+import Lab6.problema4.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

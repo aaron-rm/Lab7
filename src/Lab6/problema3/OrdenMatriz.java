@@ -1,4 +1,4 @@
-package problema3;
+package Lab6.problema3;
 
 public class OrdenMatriz {
     public static void ordenarDescendente(int[] arreglo) {
