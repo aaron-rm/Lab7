@@ -34,7 +34,7 @@ public class Main {
         Jframe.setVisible(true);
         Jframe.setContentPane(new panelPrincipal().getJPpanelPrincipal());
 
-
+                //PROBLEMA1
                 String palabra = Entrada.leerPalabra();
 
                 if (palabra == null || palabra.isEmpty()) {
@@ -66,4 +66,3 @@ public class Main {
                 frame.setVisible(true);
             }
         }
-        
