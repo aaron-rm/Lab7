@@ -25,8 +25,10 @@ public class Main {
     public static void main(String[] args) {
         JFrame Jframe = new JFrame("Laboratorio 7");
         Jframe.setDefaultCloseOperation(Jframe.EXIT_ON_CLOSE);
-        Jframe.setSize(700,400);
+        Jframe.setSize(720,480);
+        Jframe.setResizable(true);
+        Jframe.setLocationRelativeTo(null);
         Jframe.setVisible(true);
-        Jframe.setContentPane(new );
+        Jframe.setContentPane(new panelPrincipal().getJPpanelPrincipal());
     }
 }
