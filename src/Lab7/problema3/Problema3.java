@@ -1,29 +1,43 @@
 package Lab7.problema3;
+// Haga un programa que lea una matriz cuadrada de K elementos enteros y construya una
+//función genere un vector con los elementos de la diagonal secundaria ordenados de
+//mayor a menor.
 
-// Un banco ofrece a sus clientes diversos tipos de depósitos a plazo fijo. Realice un
-//programa que permita calcular el monto acumulado de un plazo fijo.
-//Tome los datos del cliente (Nombre, Cédula) y cantidad que desea depositar. El
-//mínimo para abrir la cuenta es de B/2000.00
-//Con la siguiente tabla se determina la tasa de interés anual. Utilice la fórmula de
-//interés compuesto: A=P×(1+r)n , donde:
-//A: monto acumulado
-//P: deposito inicial
-//r = tasa de interés por período
-//n= número de períodos(en años)
-//12 meses
-//4%
-//24 meses
-//4.5%
-//36 meses
-//4.55%
-//48 meses
-//4.75 %
-//60 meses
-//5%
-//Imprima cuanto obtendrá el cliente al final del plazo establecido.
-
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Problema3 {
+    public static void ejecutar() {
+        try {
+            BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("Ingrese el tamaño de la matriz cuadrada (K): ");
+            int tamañoMatriz = Integer.parseInt(scan.readLine());
 
+            if (tamañoMatriz <= 0) {
+                System.out.println("El tamaño debe ser mayor a cero.");
+                return;
+            }
+
+            Matriz matrizIngresada = new Matriz(tamañoMatriz);
+            matrizIngresada.leerElem(scan);
+            matrizIngresada.imprimirMatriz();
+            int[] diagonalSecundaria = matrizIngresada.obtenerDiagonalSecundaria();
+
+            OrdenMatriz.ordenarDescendente(diagonalSecundaria);
+
+            System.out.println("Diagonal secundaria ordenada de mayor a menor:");
+            for (int elemento : diagonalSecundaria) {
+                System.out.print(elemento + " ");
+            }
+            System.out.println();
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Debe ingresar un número entero válido.");
+        } catch (IOException e) {
+            System.out.println("Error al leer los datos.");
+        } catch (Exception e) {
+            System.out.println("Ocurrió un error inesperado: " + e.getMessage());
+        }
+    }
 }

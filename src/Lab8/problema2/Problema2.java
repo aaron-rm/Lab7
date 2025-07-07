@@ -1,4 +1,4 @@
-package Lab7.problema2;
+package Lab8.problema2;
 
 //Imprima en un ListBox los números palíndromos que hay en un rango definido por
 //el usuario. Un número palíndromo es aquel que se lee igual de izquierda a

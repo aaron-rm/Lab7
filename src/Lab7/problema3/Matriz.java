@@ -1,4 +1,4 @@
-package Lab6.problema3;
+package Lab7.problema3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
