@@ -19,6 +19,14 @@ package Lab7;
     //• Uso de arreglos o matrices (no array list)
     //• En caso de incumplir alguna de estas 4 indicaciones, su nota será automáticamente 0.
 
-public class Main {
+import javax.swing.*;
 
+public class Main {
+    public static void main(String[] args) {
+        JFrame Jframe = new JFrame("Laboratorio 7");
+        Jframe.setDefaultCloseOperation(Jframe.EXIT_ON_CLOSE);
+        Jframe.setSize(700,400);
+        Jframe.setVisible(true);
+        Jframe.setContentPane(new );
+    }
 }
