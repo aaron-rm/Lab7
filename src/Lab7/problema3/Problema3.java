@@ -20,6 +20,8 @@ package Lab7.problema3;
 //4.75 %
 //60 meses
 //5%
+//Imprima cuanto obtendrá el cliente al final del plazo establecido.
+
 
 
 public class Problema3 {
