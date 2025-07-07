@@ -1,99 +1,69 @@
 package Lab7;
 
-import Lab7.problema1.Problema1;
-import Lab7.problema2.Problema2;
-import Lab7.problema3.Problema3;
-import Lab7.problema4.*;
+//Para los 3 problemas haga las validaciones de entrada correspondientes y maneje las
+//excepciones que considere necesarias.
+//Haga las validaciones de datos correspondientes a cada problema. Incluya manejo de
+//excepciones.
+//
+//Recuerde escoger los tipos de datos correctos, usar las convenciones para los nombres de
+//variables, nombres descriptivos para variables, objetos, funciones, uso de clases y objetos y
+//expresar las respuestas de forma entendible al usuario final. Cuide la ortografía y el orden en su
+//código. Recuerde identar.
+//Exporte el archivo en carpeta zip, desde IntelliJ, siguiendo las indicaciones dada en clase.
+//Indicaciones especificas:
+    //• Cada clase debe ir en su propio archivo .java.
+    //• Uso exclusivo del Buffered Reader para entradas de datos.
+    //• Verificar que su proyecto esté correctamente comprimido y sin errores de sintaxis. Su
+    //proyecto debe ejecutar satisfactoriamente.
+    //• Uso de manejo de excepciones
+    //• Uso de arreglos o matrices (no array list)
+    //• En caso de incumplir alguna de estas 4 indicaciones, su nota será automáticamente 0.
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import Lab7.problema1.Entrada;
+import Lab7.problema1.ProcesadorVocales;
 
-//Grupo:
-//Aaron Remarchuk   8-1042-134
-//Luis King         8-1017-548
-//Edwin Rodriguez   8-975-208
-//Kevin Kakiyama    8-1025-1743
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        int opcion=0;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        while (true){
-            try {
-                System.out.printf("\n\tMenú\n");
-                System.out.println("1- Problema 1");
-                System.out.println("2- Problema 2");
-                System.out.println("3- Problema 3");
-                System.out.println("4- Problema 4");
-                System.out.println("Cualquier otro número para salir");
-                System.out.print("Ingrese una opción: ");
-                opcion = Integer.parseInt(reader.readLine());
+        JFrame Jframe = new JFrame("Laboratorio 7");
+        Jframe.setDefaultCloseOperation(Jframe.EXIT_ON_CLOSE);
+        Jframe.setSize(720,480);
+        Jframe.setResizable(true);
+        Jframe.setLocationRelativeTo(null);
+        Jframe.setVisible(true);
+        Jframe.setContentPane(new panelPrincipal().getJPpanelPrincipal());
 
-                switch (opcion){
-                    case 1:{
-                        System.out.print("Ingrese número de filas: ");
-                        int n = Integer.parseInt(reader.readLine());
-                        System.out.print("Ingrese número de columnas: ");
-                        int m = Integer.parseInt(reader.readLine());
-                        Problema1 matriz = new Problema1(n,m);
 
-                        matriz.datosMatriz(reader);
-                        System.out.println();
-                        matriz.imprimirMatriz();
+                String palabra = Entrada.leerPalabra();
 
-                        continue;
-                    }
-                    case 2:{
-                        System.out.print("Ingrese número de filas: ");
-                        int n = Integer.parseInt(reader.readLine());
-                        System.out.print("Ingrese número de columnas: ");
-                        int m = Integer.parseInt(reader.readLine());
-                        Problema2 matriz = new Problema2(n,m);
-
-                        matriz.datosMatriz(reader);
-                        System.out.println();
-                        matriz.imprimirMatriz();
-                        continue;
-                    }
-                    case 3:{
-                        System.out.println();
-                        System.out.println("\tProblema 3");
-                        Problema3.ejecutar();
-                        continue;
-                    }
-                    case 4:{
-                        try {
-                            System.out.print("Ingrese la cantidad de estudiantes: ");
-                            int cantidad = Integer.parseInt(reader.readLine());
-                            Problema4 problema = new Problema4(cantidad);
-                            problema.ejecutarMenu(reader);
-                        } catch (NumberFormatException | IOException e) {
-                            System.err.println("Entrada inválida. " + e.getMessage());
-                        }
-                        continue;
-                    }
-                    default:{
-                        break;
-                    }
+                if (palabra == null || palabra.isEmpty()) {
+                    System.out.println("No se ingresó una palabra válida.");
+                    return;
                 }
-                break;
-            }
-            catch (NumberFormatException e){
-                System.err.println("Error, ingrese un digito: "+ e.getMessage());
-            }
-            catch (RuntimeException e){
-                System.err.println("Error: "+ e.getMessage());
-            }
-            catch (IOException e){
-                System.err.println("Error: "+ e.getMessage());
-            }
-            finally {
-                System.out.println();
-                System.out.println("...Volviendo al menú");
-                System.out.println();
+
+                char[] vocales = ProcesadorVocales.obtenerVocales(palabra);
+
+                if (vocales.length == 0) {
+                    System.out.println("No se encontraron vocales.");
+                    return;
+                }
+
+                // Convertir a String[] para el JList
+                String[] vocalesStr = new String[vocales.length];
+                for (int i = 0; i < vocales.length; i++) {
+                    vocalesStr[i] = String.valueOf(vocales[i]);
+                }
+
+                // Mostrar en JList
+                JFrame frame = new JFrame("Vocales Encontradas");
+                JList<String> lista = new JList<>(vocalesStr);
+                JScrollPane scrollPane = new JScrollPane(lista);
+
+                frame.add(scrollPane);
+                frame.setSize(300, 200);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
             }
         }
-        System.out.println("...Cerrando el programa");
-    }
-}
+        

@@ -1,0 +1,29 @@
+package Lab7.problema1;
+
+//Indique la cantidad de vocales en una palabra cualquiera ingresada por el usuario.
+//Imprima estas vocales en un ListBox. Solo letras, no números.
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Entrada {
+    public static String leerPalabra() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String palabra = "";
+
+        try {
+            System.out.print("Ingrese una palabra (solo letras): ");
+            palabra = br.readLine();
+            if (!palabra.matches("[a-zA-Z]+")) {
+                throw new IllegalArgumentException("La palabra debe contener solo letras.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer la entrada: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return palabra;
+    }
+}
