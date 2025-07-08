@@ -1,9 +1,11 @@
 package Lab8;
 
+import Lab8.problema2.Problema2;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class panelPrincipal {
+public class panelPrincipal extends JFrame{
     private JPanel JPpanelPrincipal;
     private JRadioButton botonProblema1;
     private JRadioButton botonProblema2;
@@ -41,6 +43,8 @@ public class panelPrincipal {
                 }
                 else if (botonProblema2.isSelected()) {
                     //menu problema 2
+                    Problema2 problema2 = new Problema2();
+                    problema2.setVisible(true);
                 }
                 else if (botonProblema3.isSelected()) {
                     //menu problema 3
