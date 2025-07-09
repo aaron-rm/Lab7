@@ -1,5 +1,6 @@
 package Lab8;
 
+import Lab8.problema1.InterfazProblema1;
 import Lab8.problema2.Problema2;
 
 import javax.swing.*;
@@ -40,6 +41,8 @@ public class panelPrincipal extends JFrame{
             try {
                 if (botonProblema1.isSelected()) {
                     //menu problema 1
+                    InterfazProblema1 interfazProblema1 = new InterfazProblema1();
+                    interfazProblema1.setVisible(true);
                 }
                 else if (botonProblema2.isSelected()) {
                     //menu problema 2

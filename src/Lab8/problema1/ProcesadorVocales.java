@@ -1,4 +1,4 @@
-package Lab7.problema1;
+package Lab8.problema1;
 
 public class ProcesadorVocales {
     public static char[] obtenerVocales(String palabra) {
