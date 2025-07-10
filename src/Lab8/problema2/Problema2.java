@@ -1,7 +1,6 @@
 package Lab8.problema2;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
 
 //Imprima en un ListBox los números palíndromos que hay en un rango definido por
@@ -39,41 +38,16 @@ public class Problema2 extends JFrame{
             listModel.clear();
             resultado.setVisible(false);
             JSPResultado.setVisible(false);
-            try {
-                int inicio = Integer.parseInt(txtInferior.getText());
-                int fin = Integer.parseInt(txtSuperior.getText());
 
-                if (inicio > fin){
-                    throw new ArithmeticException();
-                }
 
-                for (int i = inicio; i <= fin; i++) {
-                    if (checkBoxExtra.isSelected()){
-                        if (i > -10 && i < 10){
-                            continue;
-                        }else if (esPalindromo(i)) {
-                            listModel.addElement(i);
-                        }
-                    }else if (esPalindromo(i)) {
-                        listModel.addElement(i);
-                    }
-                }
-                resultado.setVisible(true);
-                list1.setModel(listModel);
-                list1.setVisible(true);
-                JSPResultado.setVisible(true);
-                checkBoxExtra.setVisible(true);
+            Problema2Logica problema2Logica = new Problema2Logica(txtInferior.getText(),txtSuperior.getText());
+            problema2Logica.getLista(listModel,checkBoxExtra);
 
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Por favor, ingrese números válidos.");
-            }
-            catch (ArithmeticException ex) {
-                JOptionPane.showMessageDialog(null, "El límite inferior no puede ser mayor al límite superior");
-            }
-            catch (NullPointerException ex){
-                JOptionPane.showMessageDialog(null, "No existen palindromos en este rango");
-            }
-
+            resultado.setVisible(true);
+            list1.setModel(listModel);
+            list1.setVisible(true);
+            JSPResultado.setVisible(true);
+            checkBoxExtra.setVisible(true);
 
         });
 
@@ -88,10 +62,6 @@ public class Problema2 extends JFrame{
         return JPProblema2;
     }
 
-    private boolean esPalindromo(int n){
-        String original = String.valueOf(Math.abs(n));
-        String reverso = new StringBuilder(original).reverse().toString();
-        return original.equals(reverso);
-    }
+
 
 }
