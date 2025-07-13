@@ -17,6 +17,7 @@ public class Problema3 extends JFrame{
     private JRadioButton rb48;
     private JRadioButton rb60;
     private JButton bLimpiar;
+    private JButton volverAlMenúPrincipalButton;
 
 
     public Problema3(){
@@ -153,6 +154,13 @@ public class Problema3 extends JFrame{
             rb36.setSelected(false);
             rb48.setSelected(false);
             rb12.setSelected(false);
+        });
+
+        volverAlMenúPrincipalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
         });
     }
 
