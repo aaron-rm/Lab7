@@ -1,19 +1,14 @@
 package Lab8.problema3;
-import Lab8.problema3.Problema3Logica;
-
-public class Problema3 {
-  import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InteresAnual {
-
-    private JPanel panelPrincipal;
+public class Problema3 extends JFrame{
+    private JPanel PanelProblema3;
     private JTextField txtNombre;
     private JTextField txtCedula;
     private JTextField txtMonto;
-
     private JButton bCalcular;
     private JLabel lbRespuesta;
     private JRadioButton rb12;
@@ -23,7 +18,13 @@ public class InteresAnual {
     private JRadioButton rb60;
     private JButton bLimpiar;
 
-    public InteresAnual() {
+
+    public Problema3(){
+        setTitle("Problema 3 - Calcular interés");
+        setSize(720,480);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setContentPane(getPanelPrincipal());
 
         bCalcular.addActionListener(new ActionListener() {
             @Override
@@ -79,12 +80,12 @@ public class InteresAnual {
                         return;
                     }
 
-                    Problema3 cliente = new Problema3(nombre, cedula, deposito);
+                    Problema3Logica cliente = new Problema3Logica(nombre, cedula, deposito);
                     cliente.definirTasaAnual(opcion);
                     cliente.calcularInteresAnual();
 
                     lbRespuesta.setForeground(Color.BLUE);
-                    lbRespuesta.setText("El interés al plazo seleccionado es B/." +
+                    lbRespuesta.setText("El monto al final del plazo será B/." +
                             String.format("%.2f", cliente.getIntAnual()));
 
                 } catch (NumberFormatException err) {
@@ -113,14 +114,49 @@ public class InteresAnual {
                     rb36.setSelected(false);
                     rb48.setSelected(false);
                     rb60.setSelected(false);
-                    lbRespuesta.setText(""); 
+                    lbRespuesta.setText("");
                 }
             }
+        });
+
+
+        rb12.addActionListener(ActionListener->{
+            rb24.setSelected(false);
+            rb36.setSelected(false);
+            rb48.setSelected(false);
+            rb60.setSelected(false);
+        });
+
+        rb24.addActionListener(ActionListener->{
+            rb12.setSelected(false);
+            rb36.setSelected(false);
+            rb48.setSelected(false);
+            rb60.setSelected(false);
+        });
+
+        rb36.addActionListener(ActionListener->{
+            rb24.setSelected(false);
+            rb12.setSelected(false);
+            rb48.setSelected(false);
+            rb60.setSelected(false);
+        });
+
+        rb48.addActionListener(ActionListener->{
+            rb24.setSelected(false);
+            rb36.setSelected(false);
+            rb12.setSelected(false);
+            rb60.setSelected(false);
+        });
+
+        rb60.addActionListener(ActionListener->{
+            rb24.setSelected(false);
+            rb36.setSelected(false);
+            rb48.setSelected(false);
+            rb12.setSelected(false);
         });
     }
 
     public JPanel getPanelPrincipal() {
-        return panelPrincipal;
+        return PanelProblema3;
     }
-}
 }

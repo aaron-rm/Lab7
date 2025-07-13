@@ -2,6 +2,7 @@ package Lab8;
 
 import Lab8.problema1.InterfazProblema1;
 import Lab8.problema2.Problema2;
+import Lab8.problema3.Problema3;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -51,6 +52,8 @@ public class panelPrincipal extends JFrame{
                 }
                 else if (botonProblema3.isSelected()) {
                     //menu problema 3
+                    Problema3 problema3 = new Problema3();
+                    problema3.setVisible(true);
                 }
                 else throw new RuntimeException();
 

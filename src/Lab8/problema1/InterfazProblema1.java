@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
         public InterfazProblema1() {
             setTitle("Problema 1 - Contar Vocales");
-            setSize(450, 350);
+            setSize(500, 350);
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setLayout(new BorderLayout());
 
@@ -39,7 +39,7 @@ import java.awt.event.ActionListener;
             JPanel panelInferior = new JPanel();
             panelInferior.setLayout(new FlowLayout());
 
-            botonReintentar = new JButton("Volver a intentar");
+            botonReintentar = new JButton("Limpiar");
             botonMenu = new JButton("Regresar al menú principal");
 
             panelInferior.add(botonReintentar);

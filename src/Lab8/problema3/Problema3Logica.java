@@ -21,24 +21,24 @@ public class Problema3Logica {
     public void definirTasaAnual(int opcion) {
         switch (opcion) {
             case 1:
-                meses = 12;
-                tasa = 0.04;
+                this.meses = 12;
+                this.tasa = 0.04;
                 break;
             case 2:
-                meses = 24;
-                tasa = 0.045;
+                this.meses = 24;
+                this.tasa = 0.045;
                 break;
             case 3:
-                meses = 36;
-                tasa = 0.0455;
+                this.meses = 36;
+                this.tasa = 0.0455;
                 break;
             case 4:
-                meses = 48;
-                tasa = 0.0475;
+                this.meses = 48;
+                this.tasa = 0.0475;
                 break;
             case 5:
-                meses = 60;
-                tasa = 0.05;
+                this.meses = 60;
+                this.tasa = 0.05;
                 break;
             default:
                 System.out.println("Opción inválida.");
@@ -47,6 +47,6 @@ public class Problema3Logica {
 
     public void calcularInteresAnual() {
         double n = meses / 12.0;
-        intAnual = deposito * Math.pow(1 + tasa, n);
+        this.intAnual = deposito * Math.pow(1 + tasa, n);
     }
 }
