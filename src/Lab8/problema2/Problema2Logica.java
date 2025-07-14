@@ -33,7 +33,7 @@ public class Problema2Logica {
             for (int i = inicio; i <= fin; i++) {
                 if (checkBoxExtra.isSelected()){
                     if (i > -10 && i < 10){
-                        listaPalindromos.clear();
+                        continue;
                     }else if (esPalindromo(i)) {
                         listaPalindromos.addElement(i);
                     }
